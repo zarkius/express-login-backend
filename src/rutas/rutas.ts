@@ -1,9 +1,12 @@
+'use strict';
 import { Router, Request, Response } from 'express';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import { Strategy as LocalStrategy } from 'passport-local';
 import passport from 'passport';
 import pool from '../db/db'; // Asegúrate de que la ruta a tu archivo de configuración de la base de datos es correcta
 import { PasswordBuilder, generateSalt } from '../utils/passwordutils'; // Asegúrate de que la ruta a tu archivo de utilidades es correcta
+import dotenv from 'dotenv';
+dotenv.config();
 const router = Router();
 
 declare module 'express-session' {
@@ -40,8 +43,8 @@ passport.use(new LocalStrategy({
 
 // Configurar estrategia Google OAuth2
 passport.use(new GoogleStrategy({
-  clientID: '396336709726-06rprvjnq8f8ru35tvgps5qc2jc4nuta.apps.googleusercontent.com',
-  clientSecret: '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',
+  clientID: process.env.GOOGLE_CLIENT_ID!,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
   callbackURL: 'http://localhost:3000/api/auth/callback',
   passReqToCallback: true
 },

@@ -1,5 +1,5 @@
 // Archivo: src/utils/passwordUtils.ts
-
+'use strict';
 import crypto from 'crypto';
 import { hash as externalHash, verify } from 'password-builder';
 

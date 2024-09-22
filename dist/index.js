@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -9,8 +9,10 @@ const express_session_1 = __importDefault(require("express-session"));
 const passport_1 = __importDefault(require("passport"));
 const path_1 = __importDefault(require("path"));
 const rutas_1 = __importDefault(require("./rutas/rutas"));
+const morgan_1 = __importDefault(require("morgan"));
 const app = (0, express_1.default)();
 const PORT = 3000;
+app.use((0, morgan_1.default)('combined'));
 // Configurar el motor de plantillas EJS
 app.set('view engine', 'ejs');
 // Configurar el directorio de vistas

@@ -6,9 +6,13 @@
 <body>
   <h1>Perfil de Usuario</h1>
   <p>id: <%= user.id %></p>
+  <p>google_id: <%= user.google_id %></p>
   <p>Nombre: <%= user.display_name %></p>
   <p>Email: <%= user.email %></p>
+  <p>Autenticado mediante: <%= authType %></p>
 
-  <p>Tipo de Autenticación: <%= authType %></p>
+  <a href="/api/logout">Cerrar sesión</a>
+
+
 </body>
 </html>

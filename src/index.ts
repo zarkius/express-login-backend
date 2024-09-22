@@ -1,12 +1,16 @@
+'use strict';
 import express from 'express';
 import bodyParser from 'body-parser';
 import session from 'express-session';
 import passport from 'passport';
 import path from 'path';
 import router from './rutas/rutas';
+import morgan from 'morgan';
 
 const app = express();
 const PORT = 3000;
+
+app.use(morgan('combined'));
 
 // Configurar el motor de plantillas EJS
 app.set('view engine', 'ejs');
@@ -30,7 +34,6 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 
 // Usar el enrutador para las rutas definidas en './rutas/rutas'

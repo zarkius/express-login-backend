@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -18,6 +18,8 @@ const passport_local_1 = require("passport-local");
 const passport_1 = __importDefault(require("passport"));
 const db_1 = __importDefault(require("../db/db")); // Asegúrate de que la ruta a tu archivo de configuración de la base de datos es correcta
 const passwordutils_1 = require("../utils/passwordutils"); // Asegúrate de que la ruta a tu archivo de utilidades es correcta
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 const router = (0, express_1.Router)();
 // Estrategia Local
 passport_1.default.use(new passport_local_1.Strategy({
@@ -47,8 +49,8 @@ passport_1.default.use(new passport_local_1.Strategy({
 })));
 // Configurar estrategia Google OAuth2
 passport_1.default.use(new passport_google_oauth20_1.Strategy({
-    clientID: '396336709726-06rprvjnq8f8ru35tvgps5qc2jc4nuta.apps.googleusercontent.com',
-    clientSecret: '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',
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: 'http://localhost:3000/api/auth/callback',
     passReqToCallback: true
 }, (req, accessToken, refreshToken, profile, done) => __awaiter(void 0, void 0, void 0, function* () {
