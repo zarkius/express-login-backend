@@ -16,6 +16,7 @@ declare module 'express-session' {
   }
 }
 
+
 // Estrategia Local
 passport.use(new LocalStrategy({
   usernameField: 'display_name',
